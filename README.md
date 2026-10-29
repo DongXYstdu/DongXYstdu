@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/dafeiyu-tank.svg" alt="鲸鱼娘大肥鱼：蓝发、鲸尾、白蕾丝女仆装，围裙上绣着一只小鲸鱼" width="360" />
+  <img src="https://cdn.jsdelivr.net/gh/DongXYstdu/DongXYstdu@main/assets/dafeiyu-tank.svg" alt="鲸鱼娘大肥鱼：蓝发、鲸尾、白蕾丝女仆装，围裙上绣着一只小鲸鱼" width="360" />
 </div>
 
 ### 👋 Hi, I'm @DongXYstdu
