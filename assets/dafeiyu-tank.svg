@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-labelledby="tankTitle tankDesc">
+  <title id="tankTitle">大肥鱼鱼缸</title>
+  <desc id="tankDesc">一只圆滚滚的大肥鱼在鱼缸里来回游动，水草轻轻摇摆，泡泡不断升起。</desc>
+
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e517d"/>
+      <stop offset="0.5" stop-color="#073a5c"/>
+      <stop offset="1" stop-color="#042034"/>
+    </linearGradient>
+    <linearGradient id="topGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fe3ff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#8fe3ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rayFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cdf2ff" stop-opacity="0.16"/>
+      <stop offset="0.6" stop-color="#cdf2ff" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#cdf2ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f5b78"/>
+      <stop offset="1" stop-color="#0c2b41"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0.25" y1="0" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#8adcff"/>
+      <stop offset="0.5" stop-color="#45adf2"/>
+      <stop offset="1" stop-color="#2a6fd0"/>
+    </linearGradient>
+    <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6fcbf8"/>
+      <stop offset="1" stop-color="#2f7fd8"/>
+    </linearGradient>
+    <radialGradient id="bubble" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#bfe9ff" stop-opacity="0.12"/>
+    </radialGradient>
+    <clipPath id="tank">
+      <rect x="1" y="1" width="898" height="278" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    .swim   { animation: swim 26s ease-in-out infinite; }
+    .flip   { animation: flip 26s linear infinite; }
+    .bob    { animation: bob 4.5s ease-in-out infinite alternate; }
+    .tail   { animation: tail 1.15s ease-in-out infinite alternate; }
+    .fin    { animation: fin 1.7s ease-in-out infinite alternate; }
+    .eye    { animation: blink 5.2s ease-in-out infinite; }
+    .bub    { animation: rise 3.4s ease-in infinite; }
+    .bub2   { animation: rise 4.2s ease-in 0.7s infinite; }
+    .bub3   { animation: rise 3.8s ease-in 1.6s infinite; }
+    .weed   { animation: sway 4.6s ease-in-out infinite alternate; }
+    .weed2  { animation: sway 5.4s ease-in-out 0.4s infinite alternate; }
+    .weed3  { animation: sway 6.2s ease-in-out 0.2s infinite alternate-reverse; }
+    .wave   { animation: wave 9s linear infinite; }
+    .ray    { animation: shimmer 6s ease-in-out infinite alternate; }
+    .ray2   { animation: shimmer 7.5s ease-in-out 1.2s infinite alternate-reverse; }
+    .float  { animation: drift 7s ease-in-out infinite alternate; }
+
+    @keyframes swim {
+      0%   { transform: translateX(0); }
+      46%  { transform: translateX(468px); }
+      50%  { transform: translateX(468px); }
+      96%  { transform: translateX(0); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes flip {
+      0%, 49.9% { transform: scaleX(1); }
+      50%, 100% { transform: scaleX(-1); }
+    }
+    @keyframes bob {
+      from { transform: translateY(-8px); }
+      to   { transform: translateY(7px); }
+    }
+    @keyframes tail {
+      from { transform: rotate(-13deg); }
+      to   { transform: rotate(13deg); }
+    }
+    @keyframes fin {
+      from { transform: rotate(-14deg); }
+      to   { transform: rotate(12deg); }
+    }
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      94%           { transform: scaleY(0.08); }
+      97%           { transform: scaleY(1); }
+    }
+    @keyframes rise {
+      0%   { transform: translateY(0) scale(0.6); opacity: 0; }
+      15%  { opacity: 0.9; }
+      70%  { opacity: 0.7; }
+      100% { transform: translateY(-150px) scale(1.15); opacity: 0; }
+    }
+    @keyframes sway {
+      from { transform: rotate(-7deg); }
+      to   { transform: rotate(7deg); }
+    }
+    @keyframes wave {
+      from { transform: translateX(0); }
+      to   { transform: translateX(100px); }
+    }
+    @keyframes shimmer {
+      from { opacity: 0.45; }
+      to   { opacity: 0.85; }
+    }
+    @keyframes drift {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(12px, -7px); }
+    }
+
+    /* 所有动画都以各自局部原点为轴心，避开 transform-origin 的兼容问题 */
+    .swim, .flip, .bob, .tail, .fin, .eye, .bub, .bub2, .bub3,
+    .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
+      transform-box: view-box;
+      transform-origin: 0 0;
+    }
+
+    /* 转身时以鱼身中心为轴，避免翻转时左右跳动 */
+    .flip { transform-origin: 10px 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .swim, .flip, .bob, .tail, .fin, .eye, .bub, .bub2, .bub3,
+      .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
+        animation: none;
+      }
+    }
+  </style>
+
+  <g clip-path="url(#tank)">
+    <!-- 水体 -->
+    <rect x="0" y="0" width="900" height="280" fill="url(#water)"/>
+    <rect x="0" y="0" width="900" height="120" fill="url(#topGlow)"/>
+
+    <!-- 水面 -->
+    <path class="wave" d="M-100 34 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0 q 25 -8 50 0 q 25 8 50 0" fill="none" stroke="#9ee6ff" stroke-opacity="0.4" stroke-width="2"/>
+
+    <!-- 光柱 -->
+    <g class="ray" fill="url(#rayFade)">
+      <polygon points="120,-10 250,-10 190,280 60,280"/>
+      <polygon points="430,-10 500,-10 470,280 370,280"/>
+      <polygon points="700,-10 790,-10 740,280 640,280"/>
+    </g>
+    <g class="ray2" fill="url(#rayFade)">
+      <polygon points="270,-10 350,-10 310,280 220,280"/>
+      <polygon points="600,-10 660,-10 630,280 555,280"/>
+    </g>
+
+    <!-- 沙地 -->
+    <path d="M0 280 V246 C 110 234 215 252 335 247 C 470 241 555 226 700 240 C 792 249 852 245 900 239 V280 Z" fill="url(#sand)"/>
+    <path d="M0 246 C 110 234 215 252 335 247 C 470 241 555 226 700 240 C 792 249 852 245 900 239" fill="none" stroke="#62a5c6" stroke-opacity="0.4" stroke-width="2"/>
+
+    <!-- 石头 -->
+    <path d="M486 252 C 486 240 500 232 520 232 C 542 232 558 240 558 251 C 540 256 504 256 486 252 Z" fill="#154a66"/>
+    <path d="M486 252 C 500 247 536 245 558 251 C 540 256 504 256 486 252 Z" fill="#0f3b53"/>
+    <path d="M598 250 C 598 241 608 235 619 235 C 631 235 640 241 640 249 C 626 253 610 253 598 250 Z" fill="#154a66"/>
+
+    <!-- 卵石 -->
+    <g fill="#123f5a">
+      <ellipse cx="168" cy="256" rx="16" ry="6"/>
+      <ellipse cx="196" cy="259" rx="9" ry="4"/>
+      <ellipse cx="706" cy="253" rx="14" ry="5"/>
+      <ellipse cx="876" cy="248" rx="10" ry="4"/>
+    </g>
+
+    <!-- 水草 -->
+    <g transform="translate(72,246)">
+      <g class="weed">
+        <path d="M0 0 C -15 -28 -2 -52 -13 -80 C -8 -86 -1 -83 1 -74 C 9 -48 2 -26 9 0 Z" fill="#2ea983" fill-opacity="0.9"/>
+      </g>
+      <g class="weed2" transform="translate(20,2)">
+        <path d="M0 0 C -10 -22 2 -44 -7 -66 C -2 -71 4 -68 5 -60 C 11 -40 3 -20 7 0 Z" fill="#3ecb9c" fill-opacity="0.75"/>
+      </g>
+      <g class="weed3" transform="translate(-20,3)">
+        <path d="M0 0 C -8 -16 1 -32 -5 -48 C -1 -52 3 -49 4 -43 C 8 -26 2 -12 5 0 Z" fill="#24996f" fill-opacity="0.65"/>
+      </g>
+    </g>
+    <g transform="translate(806,248)">
+      <g class="weed2">
+        <path d="M0 0 C 15 -30 2 -58 14 -88 C 9 -94 1 -91 -1 -82 C -10 -54 -2 -26 -9 0 Z" fill="#2ea983" fill-opacity="0.9"/>
+      </g>
+      <g class="weed3" transform="translate(22,1)">
+        <path d="M0 0 C 11 -24 -2 -46 8 -70 C 3 -75 -3 -72 -4 -63 C -11 -42 -2 -22 -7 0 Z" fill="#3ecb9c" fill-opacity="0.7"/>
+      </g>
+      <g class="weed" transform="translate(-26,3)">
+        <path d="M0 0 C -9 -18 1 -34 -6 -52 C -2 -56 3 -53 4 -46 C 9 -28 2 -14 6 0 Z" fill="#24996f" fill-opacity="0.6"/>
+      </g>
+    </g>
+
+    <!-- 小珊瑚 -->
+    <g transform="translate(752,252)" fill="#e0897d" fill-opacity="0.75">
+      <path d="M0 0 C -2 -12 -10 -16 -12 -26 C -8 -28 -4 -24 -3 -18 C -2 -26 0 -32 3 -36 C 5 -32 5 -24 4 -16 C 8 -22 12 -24 14 -20 C 11 -12 8 -6 8 0 Z"/>
+    </g>
+
+    <!-- 小浮游鱼群 -->
+    <g class="float" fill="#bfe9ff" fill-opacity="0.45">
+      <ellipse cx="392" cy="86" rx="7" ry="4"/>
+      <ellipse cx="374" cy="95" rx="5.5" ry="3.2"/>
+      <ellipse cx="410" cy="97" rx="4.5" ry="2.8"/>
+      <ellipse cx="360" cy="106" rx="3.5" ry="2.2"/>
+    </g>
+
+    <!-- 漂浮气泡 -->
+    <g fill="url(#bubble)">
+      <circle cx="250" cy="200" r="4">
+        <animate attributeName="cy" values="210;60" dur="9s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.7;0" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="560" cy="220" r="3">
+        <animate attributeName="cy" values="230;70" dur="7.5s" begin="1.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.6;0" dur="7.5s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="712" cy="210" r="5">
+        <animate attributeName="cy" values="220;64" dur="11s" begin="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.55;0" dur="11s" begin="3s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- 大肥鱼 -->
+    <g transform="translate(140,150)">
+      <g class="swim"><g class="bob"><g class="flip">
+
+        <!-- 尾鳍 -->
+        <g transform="translate(-48,2)">
+          <g class="tail">
+            <path d="M 6 -8 C -14 -32 -38 -40 -46 -35 C -36 -14 -36 14 -46 35 C -38 40 -14 32 6 8 Z" fill="url(#fin)"/>
+          </g>
+        </g>
+
+        <!-- 背鳍 -->
+        <path d="M -16 -38 C -14 -58 4 -64 18 -56 C 23 -52 25 -46 25 -40 Z" fill="url(#fin)" fill-opacity="0.95"/>
+
+        <!-- 身体 -->
+        <path d="M 78 2 C 78 -26 58 -44 24 -45 C -12 -46 -38 -32 -50 -12 C -58 2 -54 18 -42 29 C -22 45 18 45 46 33 C 68 23 78 15 78 2 Z" fill="url(#body)"/>
+
+        <!-- 肚皮 -->
+        <ellipse cx="12" cy="20" rx="47" ry="19" fill="#e6f7ff" fill-opacity="0.55"/>
+        <!-- 背部高光 -->
+        <ellipse cx="14" cy="-24" rx="30" ry="11" fill="#ffffff" fill-opacity="0.25" transform="rotate(-8 14 -24)"/>
+
+        <!-- 胸鳍 -->
+        <g transform="translate(10,18)">
+          <g class="fin">
+            <path d="M 0 0 C 9 2 17 7 21 15 C 19 19 15 21 11 20 C 4 18 -2 11 -4 5 Z" fill="url(#fin)"/>
+          </g>
+        </g>
+
+        <!-- 腮红 -->
+        <ellipse cx="48" cy="11" rx="6" ry="3.8" fill="#ff9ec2" fill-opacity="0.32"/>
+
+        <!-- 眼睛 -->
+        <g transform="translate(41,-12)">
+          <g class="eye">
+            <circle cx="0" cy="0" r="13.5" fill="#f4fbff"/>
+            <circle cx="3" cy="1" r="8" fill="#0b2a44"/>
+            <circle cx="6" cy="-3" r="3.2" fill="#ffffff"/>
+            <circle cx="-3" cy="4" r="1.6" fill="#ffffff" fill-opacity="0.75"/>
+          </g>
+        </g>
+
+        <!-- 嘴 -->
+        <path d="M 69 11 q 5.5 5 11 -1" fill="none" stroke="#0b2a44" stroke-opacity="0.42" stroke-width="2.4" stroke-linecap="round"/>
+
+        <!-- 吐泡泡 -->
+        <g transform="translate(80,2)">
+          <circle class="bub"  cx="0" cy="0" r="4.2" fill="url(#bubble)"/>
+          <circle class="bub2" cx="7" cy="4" r="2.9" fill="url(#bubble)"/>
+          <circle class="bub3" cx="-3" cy="6" r="3.4" fill="url(#bubble)"/>
+        </g>
+
+      </g></g></g>
+    </g>
+
+    <!-- 水中的小颗粒 -->
+    <g fill="#cdefff" fill-opacity="0.22">
+      <circle cx="330" cy="150" r="1.6"/>
+      <circle cx="470" cy="120" r="1.3"/>
+      <circle cx="620" cy="170" r="1.8"/>
+      <circle cx="760" cy="110" r="1.4"/>
+      <circle cx="200" cy="90" r="1.2"/>
+      <circle cx="545" cy="200" r="1.5"/>
+    </g>
+
+    <!-- 署名 -->
+    <text x="24" y="262" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#bfe9ff" fill-opacity="0.5">DONGXYSTDU'S FISH TANK</text>
+  </g>
+
+  <rect x="1" y="1" width="898" height="278" rx="18" fill="none" stroke="#8fd8ff" stroke-opacity="0.2" stroke-width="2"/>
+</svg>
