@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280" role="img" aria-labelledby="tankTitle tankDesc">
   <title id="tankTitle">大肥鱼鱼缸</title>
-  <desc id="tankDesc">一只圆滚滚的大肥鱼在鱼缸里来回游动，水草轻轻摇摆，泡泡不断升起。</desc>
+  <desc id="tankDesc">鲸鱼娘大肥鱼在鱼缸里慢慢漂着，长发和尾巴随水摆动，偶尔吐个泡泡。</desc>
 
   <defs>
     <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
@@ -21,31 +21,58 @@
       <stop offset="0" stop-color="#1f5b78"/>
       <stop offset="1" stop-color="#0c2b41"/>
     </linearGradient>
-    <linearGradient id="body" x1="0.25" y1="0" x2="0.75" y2="1">
-      <stop offset="0" stop-color="#8adcff"/>
-      <stop offset="0.5" stop-color="#45adf2"/>
-      <stop offset="1" stop-color="#2a6fd0"/>
+
+    <!-- 角色配色：深海军蓝渐变到亮蓝 -->
+    <linearGradient id="hair" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#2f4494"/>
+      <stop offset="0.5" stop-color="#3a55a8"/>
+      <stop offset="1" stop-color="#5f9ae0"/>
     </linearGradient>
-    <linearGradient id="fin" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#6fcbf8"/>
-      <stop offset="1" stop-color="#2f7fd8"/>
+    <linearGradient id="hairDark" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#2b3f8f"/>
+      <stop offset="0.65" stop-color="#22337a"/>
+      <stop offset="1" stop-color="#3f6fbe"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2e9"/>
+      <stop offset="1" stop-color="#ffdcc9"/>
+    </linearGradient>
+    <linearGradient id="iris" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a8d8ff"/>
+      <stop offset="0.42" stop-color="#4f8fe8"/>
+      <stop offset="1" stop-color="#1f3a86"/>
+    </linearGradient>
+    <linearGradient id="dress" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#2b3a72"/>
+      <stop offset="1" stop-color="#182148"/>
+    </linearGradient>
+    <linearGradient id="tail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a7fd0"/>
+      <stop offset="1" stop-color="#9ad6ff"/>
     </linearGradient>
     <radialGradient id="bubble" cx="0.35" cy="0.3" r="0.75">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
       <stop offset="1" stop-color="#bfe9ff" stop-opacity="0.12"/>
     </radialGradient>
+    <clipPath id="eyeClip">
+      <ellipse cx="0" cy="0" rx="13.8" ry="14.4"/>
+    </clipPath>
     <clipPath id="tank">
       <rect x="1" y="1" width="898" height="278" rx="18"/>
     </clipPath>
   </defs>
 
   <style>
-    .swim   { animation: swim 26s ease-in-out infinite; }
-    .flip   { animation: flip 26s linear infinite; }
-    .bob    { animation: bob 4.5s ease-in-out infinite alternate; }
-    .tail   { animation: tail 1.15s ease-in-out infinite alternate; }
-    .fin    { animation: fin 1.7s ease-in-out infinite alternate; }
-    .eye    { animation: blink 5.2s ease-in-out infinite; }
+    .drift  { animation: drift 30s ease-in-out infinite; }
+    .bob    { animation: bob 5s ease-in-out infinite alternate; }
+    .tilt   { animation: tilt 9s ease-in-out infinite alternate; }
+    .hairB  { animation: sway 6s ease-in-out infinite alternate; }
+    .lockL  { animation: sway 4.6s ease-in-out 0.3s infinite alternate; }
+    .lockR  { animation: sway 5.2s ease-in-out 0.9s infinite alternate-reverse; }
+    .tail   { animation: tail 2.1s ease-in-out infinite alternate; }
+    .armL   { animation: arm 3.2s ease-in-out infinite alternate; }
+    .armR   { animation: arm 2.6s ease-in-out 0.6s infinite alternate-reverse; }
+    .eye    { animation: blink 5.4s ease-in-out infinite; }
     .bub    { animation: rise 3.4s ease-in infinite; }
     .bub2   { animation: rise 4.2s ease-in 0.7s infinite; }
     .bub3   { animation: rise 3.8s ease-in 1.6s infinite; }
@@ -55,30 +82,34 @@
     .wave   { animation: wave 9s linear infinite; }
     .ray    { animation: shimmer 6s ease-in-out infinite alternate; }
     .ray2   { animation: shimmer 7.5s ease-in-out 1.2s infinite alternate-reverse; }
-    .float  { animation: drift 7s ease-in-out infinite alternate; }
+    .float  { animation: drift 8s ease-in-out infinite alternate; }
 
-    @keyframes swim {
+    @keyframes drift {
       0%   { transform: translateX(0); }
-      46%  { transform: translateX(468px); }
-      50%  { transform: translateX(468px); }
+      46%  { transform: translateX(430px); }
+      52%  { transform: translateX(430px); }
       96%  { transform: translateX(0); }
       100% { transform: translateX(0); }
     }
-    @keyframes flip {
-      0%, 49.9% { transform: scaleX(1); }
-      50%, 100% { transform: scaleX(-1); }
-    }
     @keyframes bob {
-      from { transform: translateY(-8px); }
-      to   { transform: translateY(7px); }
+      from { transform: translateY(-10px); }
+      to   { transform: translateY(8px); }
+    }
+    @keyframes tilt {
+      from { transform: rotate(-2.5deg); }
+      to   { transform: rotate(2.5deg); }
+    }
+    @keyframes sway {
+      from { transform: rotate(-3.5deg); }
+      to   { transform: rotate(3.5deg); }
     }
     @keyframes tail {
-      from { transform: rotate(-13deg); }
-      to   { transform: rotate(13deg); }
+      from { transform: rotate(-7deg); }
+      to   { transform: rotate(7deg); }
     }
-    @keyframes fin {
-      from { transform: rotate(-14deg); }
-      to   { transform: rotate(12deg); }
+    @keyframes arm {
+      from { transform: rotate(-8deg); }
+      to   { transform: rotate(6deg); }
     }
     @keyframes blink {
       0%, 90%, 100% { transform: scaleY(1); }
@@ -91,10 +122,6 @@
       70%  { opacity: 0.7; }
       100% { transform: translateY(-150px) scale(1.15); opacity: 0; }
     }
-    @keyframes sway {
-      from { transform: rotate(-7deg); }
-      to   { transform: rotate(7deg); }
-    }
     @keyframes wave {
       from { transform: translateX(0); }
       to   { transform: translateX(100px); }
@@ -103,24 +130,17 @@
       from { opacity: 0.45; }
       to   { opacity: 0.85; }
     }
-    @keyframes drift {
-      from { transform: translate(0, 0); }
-      to   { transform: translate(12px, -7px); }
-    }
 
     /* 所有动画都以各自局部原点为轴心，避开 transform-origin 的兼容问题 */
-    .swim, .flip, .bob, .tail, .fin, .eye, .bub, .bub2, .bub3,
-    .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
+    .drift, .bob, .tilt, .hairB, .lockL, .lockR, .tail, .armL, .armR, .eye,
+    .bub, .bub2, .bub3, .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
       transform-box: view-box;
       transform-origin: 0 0;
     }
 
-    /* 转身时以鱼身中心为轴，避免翻转时左右跳动 */
-    .flip { transform-origin: 10px 0; }
-
     @media (prefers-reduced-motion: reduce) {
-      .swim, .flip, .bob, .tail, .fin, .eye, .bub, .bub2, .bub3,
-      .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
+      .drift, .bob, .tilt, .hairB, .lockL, .lockR, .tail, .armL, .armR, .eye,
+      .bub, .bub2, .bub3, .weed, .weed2, .weed3, .wave, .ray, .ray2, .float {
         animation: none;
       }
     }
@@ -215,56 +235,214 @@
       </circle>
     </g>
 
-    <!-- 大肥鱼 -->
-    <g transform="translate(140,150)">
-      <g class="swim"><g class="bob"><g class="flip">
+    <!-- 鲸鱼娘 · 大肥鱼 -->
+    <g transform="translate(140,168) scale(0.8)">
+      <g class="drift"><g class="bob"><g class="tilt">
 
-        <!-- 尾鳍 -->
-        <g transform="translate(-48,2)">
+        <!-- 后发 -->
+        <g transform="translate(0,-112)">
+          <g class="hairB">
+            <path d="M 0 -4 C -30 -4 -50 12 -54 34 C -58 56 -66 82 -62 106 C -58 128 -66 146 -56 160 C -46 172 -32 168 -24 176 C -14 186 14 186 24 176 C 32 168 46 172 56 160 C 66 146 58 128 62 106 C 66 82 58 56 54 34 C 50 12 30 -4 0 -4 Z" fill="url(#hairDark)"/>
+            <path d="M -46 60 C -54 84 -52 108 -44 126 C -38 112 -36 90 -38 68 Z" fill="#1c2a63" fill-opacity="0.5"/>
+            <path d="M 44 62 C 52 86 50 110 42 126 C 36 112 34 90 36 68 Z" fill="#1c2a63" fill-opacity="0.5"/>
+            <path d="M -50 120 C -52 136 -48 148 -42 156 C -36 146 -36 132 -38 120 Z" fill="#7fb8f2" fill-opacity="0.75"/>
+            <path d="M 48 122 C 50 138 46 150 40 158 C 34 148 34 134 36 122 Z" fill="#7fb8f2" fill-opacity="0.75"/>
+          </g>
+        </g>
+
+        <!-- 鲸鱼尾巴 -->
+        <g transform="translate(36,44)">
           <g class="tail">
-            <path d="M 6 -8 C -14 -32 -38 -40 -46 -35 C -36 -14 -36 14 -46 35 C -38 40 -14 32 6 8 Z" fill="url(#fin)"/>
+            <path d="M -4 2 C 12 6 28 13 41 22 C 49 27 49 36 40 39 C 33 31 25 27 17 26 C 20 36 17 46 9 53 C 1 46 -4 36 -8 30 C -12 23 -13 13 -13 2 Z"
+                  fill="url(#tail)" stroke="#22457e" stroke-opacity="0.8" stroke-width="1.6"/>
+            <path d="M 3 10 C 16 14 27 20 35 26 C 38 29 38 32 35 34 C 28 28 20 25 13 24 C 9 20 5 15 3 10 Z" fill="#eaf6ff" fill-opacity="0.4"/>
+            <path d="M 14 26 C 20 30 25 35 28 40" fill="none" stroke="#2e5699" stroke-opacity="0.3" stroke-width="1.2"/>
           </g>
         </g>
 
-        <!-- 背鳍 -->
-        <path d="M -16 -38 C -14 -58 4 -64 18 -56 C 23 -52 25 -46 25 -40 Z" fill="url(#fin)" fill-opacity="0.95"/>
+        <!-- 身体与女仆裙 -->
+        <g>
+          <!-- 脖子 -->
+          <path d="M -7 -32 L 7 -32 L 7 -20 L -7 -20 Z" fill="url(#skin)"/>
+          <!-- 上身 -->
+          <path d="M -28 -22 C -15 -31 15 -31 28 -22 L 32 6 C 14 14 -14 14 -32 6 Z" fill="url(#dress)"/>
+          <!-- 领口 -->
+          <path d="M -14 -26 C -5 -21 5 -21 14 -26 C 10 -16 -10 -16 -14 -26 Z" fill="#f8faff"/>
+          <!-- 领结 -->
+          <g transform="translate(0,-21)">
+            <path d="M 0 0 C -9 -7 -15 -5 -15 2 C -15 9 -9 10 0 3 Z" fill="#2b3a72"/>
+            <path d="M 0 0 C 9 -7 15 -5 15 2 C 15 9 9 10 0 3 Z" fill="#2b3a72"/>
+            <circle cx="0" cy="1" r="3.2" fill="#7fc4ff"/>
+          </g>
+          <!-- 围裙 -->
+          <path d="M -21 -8 C -8 -12 8 -12 21 -8 L 30 34 C 10 43 -10 43 -30 34 Z" fill="#f8faff"/>
+          <path d="M -21 -8 C -8 -12 8 -12 21 -8 L 30 34 C 10 43 -10 43 -30 34 Z" fill="none" stroke="#e2c47e" stroke-opacity="0.6" stroke-width="1.6"/>
+          <path d="M -29 31 C -10 39 10 39 29 31" fill="none" stroke="#dfe6f7" stroke-width="3" stroke-dasharray="0.1 5" stroke-linecap="round"/>
+          <!-- 围裙上的小鲸鱼 -->
+          <g transform="translate(0,7) scale(0.78)">
+            <path d="M -9 1 C -8 -5 -1 -7 4 -4 C 6 -7 10 -7 11 -3 C 11 3 4 6 -1 5 C -5 4 -9 3 -9 1 Z" fill="#4a90d9"/>
+            <path d="M 11 -3 L 17 -7 L 15 0 Z" fill="#4a90d9"/>
+            <path d="M -2 -7 C -4 -11 -7 -12 -9 -11" fill="none" stroke="#8fd0ff" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="-3" cy="0" r="1.2" fill="#f8faff"/>
+          </g>
+          <!-- 裙摆 -->
+          <path d="M -30 8 C -44 22 -54 36 -57 50 C -30 60 30 60 57 50 C 54 36 44 22 30 8 Z" fill="url(#dress)"/>
+          <path d="M -55 44 C -30 53 30 53 55 44" fill="none" stroke="#e2c47e" stroke-width="2.2" stroke-opacity="0.8"/>
+          <!-- 裙摆小蝴蝶结 -->
+          <g transform="translate(-38,42)" fill="#2b3a72" stroke="#e2c47e" stroke-width="0.8">
+            <path d="M 0 0 C -7 -5 -11 -3 -11 1 C -11 5 -7 6 0 2 Z"/>
+            <path d="M 0 0 C 7 -5 11 -3 11 1 C 11 5 7 6 0 2 Z"/>
+          </g>
+          <g transform="translate(38,42)" fill="#2b3a72" stroke="#e2c47e" stroke-width="0.8">
+            <path d="M 0 0 C -7 -5 -11 -3 -11 1 C -11 5 -7 6 0 2 Z"/>
+            <path d="M 0 0 C 7 -5 11 -3 11 1 C 11 5 7 6 0 2 Z"/>
+          </g>
+          <!-- 裙摆荷叶边 -->
+          <path d="M -57 47 C -40 58 40 58 57 47 L 61 57 C 36 68 -36 68 -61 57 Z" fill="#f8faff"/>
+          <path d="M -59 53 C -38 63 38 63 59 53" fill="none" stroke="#dfe6f7" stroke-width="2.4" stroke-dasharray="0.1 5" stroke-linecap="round"/>
+          <!-- 腿与鞋 -->
+          <rect x="-18" y="60" width="9" height="13" rx="4" fill="#f8faff"/>
+          <rect x="9" y="60" width="9" height="13" rx="4" fill="#f8faff"/>
+          <path d="M -21 71 C -14 71 -7 72 -6 76 C -6 81 -12 82 -21 81 Z" fill="#1d2755"/>
+          <path d="M 6 76 C 7 72 14 71 21 71 L 21 81 C 12 82 6 81 6 76 Z" fill="#1d2755"/>
+        </g>
 
-        <!-- 身体 -->
-        <path d="M 78 2 C 78 -26 58 -44 24 -45 C -12 -46 -38 -32 -50 -12 C -58 2 -54 18 -42 29 C -22 45 18 45 46 33 C 68 23 78 15 78 2 Z" fill="url(#body)"/>
-
-        <!-- 肚皮 -->
-        <ellipse cx="12" cy="20" rx="47" ry="19" fill="#e6f7ff" fill-opacity="0.55"/>
-        <!-- 背部高光 -->
-        <ellipse cx="14" cy="-24" rx="30" ry="11" fill="#ffffff" fill-opacity="0.25" transform="rotate(-8 14 -24)"/>
-
-        <!-- 胸鳍 -->
-        <g transform="translate(10,18)">
-          <g class="fin">
-            <path d="M 0 0 C 9 2 17 7 21 15 C 19 19 15 21 11 20 C 4 18 -2 11 -4 5 Z" fill="url(#fin)"/>
+        <!-- 手臂 -->
+        <g transform="translate(-28,-14)">
+          <g class="armL">
+            <ellipse cx="-2" cy="2" rx="8.5" ry="8" fill="url(#dress)"/>
+            <path d="M -6 8 C -10 14 -12 20 -11 24 L -4 25 C -3 19 -2 13 0 8 Z" fill="url(#dress)"/>
+            <circle cx="-8" cy="27" r="5" fill="url(#skin)"/>
+            <path d="M -12 20 C -10 22 -8 24 -6 25" fill="none" stroke="#f8faff" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </g>
+        <g transform="translate(28,-14)">
+          <g class="armR">
+            <ellipse cx="2" cy="2" rx="8.5" ry="8" fill="url(#dress)"/>
+            <path d="M 6 8 C 10 14 12 20 11 24 L 4 25 C 3 19 2 13 0 8 Z" fill="url(#dress)"/>
+            <circle cx="8" cy="27" r="5" fill="url(#skin)"/>
+            <path d="M 12 20 C 10 22 8 24 6 25" fill="none" stroke="#f8faff" stroke-width="3" stroke-linecap="round"/>
           </g>
         </g>
 
-        <!-- 腮红 -->
-        <ellipse cx="48" cy="11" rx="6" ry="3.8" fill="#ff9ec2" fill-opacity="0.32"/>
-
-        <!-- 眼睛 -->
-        <g transform="translate(41,-12)">
-          <g class="eye">
-            <circle cx="0" cy="0" r="13.5" fill="#f4fbff"/>
-            <circle cx="3" cy="1" r="8" fill="#0b2a44"/>
-            <circle cx="6" cy="-3" r="3.2" fill="#ffffff"/>
-            <circle cx="-3" cy="4" r="1.6" fill="#ffffff" fill-opacity="0.75"/>
+        <!-- 垂在身前的长发 -->
+        <g transform="translate(-45,-12)">
+          <g class="lockL">
+            <path d="M 0 0 C -8 12 -13 30 -12 46 C -11 58 -16 66 -13 72 C -9 68 -6 58 -4 48 C -1 32 0 15 0 0 Z" fill="url(#hair)"/>
+            <path d="M -5 40 C -6 52 -9 62 -9 68 C -6 61 -3 52 -2 44 Z" fill="#7fb8f2" fill-opacity="0.5"/>
           </g>
         </g>
+        <g transform="translate(45,-12)">
+          <g class="lockR">
+            <path d="M 0 0 C 8 12 13 30 12 46 C 11 58 16 66 13 72 C 9 68 6 58 4 48 C 1 32 0 15 0 0 Z" fill="url(#hair)"/>
+            <path d="M 5 40 C 6 52 9 62 9 68 C 6 61 3 52 2 44 Z" fill="#7fb8f2" fill-opacity="0.5"/>
+          </g>
+        </g>
+        <!-- 头 -->
+        <g transform="translate(0,-70)">
+          <!-- 脸 -->
+          <ellipse cx="0" cy="0" rx="44" ry="46" fill="url(#skin)"/>
+          <!-- 腮红 -->
+          <ellipse cx="-29" cy="14" rx="8.5" ry="4.8" fill="#ff9bb5" fill-opacity="0.42"/>
+          <ellipse cx="29" cy="14" rx="8.5" ry="4.8" fill="#ff9bb5" fill-opacity="0.42"/>
 
-        <!-- 嘴 -->
-        <path d="M 69 11 q 5.5 5 11 -1" fill="none" stroke="#0b2a44" stroke-opacity="0.42" stroke-width="2.4" stroke-linecap="round"/>
+                    <!-- 眼睛 -->
+          <g transform="translate(-18,1)">
+            <g class="eye">
+              <ellipse cx="0" cy="0" rx="13.8" ry="14.4" fill="url(#iris)"/>
+              <g clip-path="url(#eyeClip)">
+                <ellipse cx="0" cy="-13" rx="17" ry="12" fill="#14204a" fill-opacity="0.5"/>
+                <ellipse cx="0" cy="14" rx="17" ry="10" fill="#bfe9ff" fill-opacity="0.32"/>
+              </g>
+              <ellipse cx="0" cy="2" rx="4.7" ry="7.4" fill="#0d1738"/>
+              <circle cx="-4.4" cy="-4.8" r="4.7" fill="#ffffff" fill-opacity="0.96"/>
+              <circle cx="4.6" cy="5.2" r="1.6" fill="#ffffff" fill-opacity="0.6"/>
+
+              <path d="M -13.8 -4 C -13.2 -11.6 -6.6 -15.6 0 -15.6 C 6.6 -15.6 13.2 -11.6 13.8 -4" fill="none" stroke="#16204a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M -12.6 -8.6 L -17.2 -12" fill="none" stroke="#16204a" stroke-width="3.4" stroke-linecap="round"/>
+            </g>
+          </g>
+          <g transform="translate(18,1)">
+            <g class="eye">
+              <ellipse cx="0" cy="0" rx="13.8" ry="14.4" fill="url(#iris)"/>
+              <g clip-path="url(#eyeClip)">
+                <ellipse cx="0" cy="-13" rx="17" ry="12" fill="#14204a" fill-opacity="0.5"/>
+                <ellipse cx="0" cy="14" rx="17" ry="10" fill="#bfe9ff" fill-opacity="0.32"/>
+              </g>
+              <ellipse cx="0" cy="2" rx="4.7" ry="7.4" fill="#0d1738"/>
+              <circle cx="-4.4" cy="-4.8" r="4.7" fill="#ffffff" fill-opacity="0.96"/>
+              <circle cx="4.6" cy="5.2" r="1.6" fill="#ffffff" fill-opacity="0.6"/>
+
+              <path d="M -13.8 -4 C -13.2 -11.6 -6.6 -15.6 0 -15.6 C 6.6 -15.6 13.2 -11.6 13.8 -4" fill="none" stroke="#16204a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M 12.6 -8.6 L 17.2 -12" fill="none" stroke="#16204a" stroke-width="3.4" stroke-linecap="round"/>
+            </g>
+          </g><!-- 嘴 -->
+          <path d="M -6 17.5 Q 0 27.5 6 17.5 Q 0 21.5 -6 17.5 Z" fill="#a8445e"/>
+          <ellipse cx="0" cy="20.4" rx="3.1" ry="1.9" fill="#f2909f"/>
+
+          <!-- 刘海 -->
+          <path d="M -46 -14 C -50 -44 -30 -64 0 -64 C 30 -64 50 -44 46 -14 C 40 -30 33 -34 26 -24 C 19 -40 7 -42 1 -26 C -6 -40 -20 -38 -26 -22 C -33 -33 -41 -30 -46 -14 Z" fill="url(#hair)"/>
+          <path d="M -32 -52 C -20 -60 0 -62 12 -56" fill="none" stroke="#7fa3e2" stroke-width="4" stroke-opacity="0.6" stroke-linecap="round"/>
+
+          <!-- 两侧长发 -->
+          <g transform="translate(-43,-24)">
+            <g class="lockL">
+              <path d="M 0 0 C -12 14 -18 36 -16 58 C -14 74 -18 88 -10 96 C -2 86 -4 68 -2 52 C 0 32 -1 14 0 0 Z" fill="url(#hair)"/>
+            </g>
+          </g>
+          <g transform="translate(43,-24)">
+            <g class="lockR">
+              <path d="M 0 0 C 12 14 18 36 16 58 C 14 74 18 88 10 96 C 2 86 4 68 2 52 C 0 32 1 14 0 0 Z" fill="url(#hair)"/>
+            </g>
+          </g>
+
+          <!-- 鲸鱼鳍耳朵 -->
+          <g transform="translate(-45,2)">
+            <path d="M 0 0 C -16 -14 -34 -14 -45 -2 C -34 8 -24 20 -12 17 C -4 13 0 6 0 0 Z" fill="#2b3f8f"/>
+            <path d="M -6 1 C -18 -8 -30 -8 -38 -2 C -29 5 -21 13 -12 11 C -7 9 -5 5 -6 1 Z" fill="#cfe4ff"/>
+            <path d="M -20 0 C -26 -1 -31 0 -35 -1" fill="none" stroke="#2b3f8f" stroke-opacity="0.35" stroke-width="1.5"/>
+            <path d="M -18 8 C -24 7 -29 7 -33 5" fill="none" stroke="#2b3f8f" stroke-opacity="0.3" stroke-width="1.5"/>
+          </g>
+          <g transform="translate(45,2)">
+            <path d="M 0 0 C 16 -14 34 -14 45 -2 C 34 8 24 20 12 17 C 4 13 0 6 0 0 Z" fill="#2b3f8f"/>
+            <path d="M 6 1 C 18 -8 30 -8 38 -2 C 29 5 21 13 12 11 C 7 9 5 5 6 1 Z" fill="#cfe4ff"/>
+            <path d="M 20 0 C 26 -1 31 0 35 -1" fill="none" stroke="#2b3f8f" stroke-opacity="0.35" stroke-width="1.5"/>
+            <path d="M 18 8 C 24 7 29 7 33 5" fill="none" stroke="#2b3f8f" stroke-opacity="0.3" stroke-width="1.5"/>
+          </g>
+
+          <!-- 女仆头饰荷叶边 -->
+          <path d="M -46 -28 C -43 -56 -24 -71 0 -71 C 24 -71 43 -56 46 -28" fill="none" stroke="#f8faff" stroke-width="11" stroke-linecap="round"/>
+          <g fill="#f8faff">
+            <circle cx="-46" cy="-28" r="7.5"/>
+            <circle cx="-42" cy="-42" r="7.5"/>
+            <circle cx="-35" cy="-54" r="7.5"/>
+            <circle cx="-25" cy="-63" r="7.5"/>
+            <circle cx="-13" cy="-68" r="7.5"/>
+            <circle cx="0" cy="-70" r="7.5"/>
+            <circle cx="13" cy="-68" r="7.5"/>
+            <circle cx="25" cy="-63" r="7.5"/>
+            <circle cx="35" cy="-54" r="7.5"/>
+            <circle cx="42" cy="-42" r="7.5"/>
+            <circle cx="46" cy="-28" r="7.5"/>
+          </g>
+          <path d="M -42 -31 C -39 -52 -22 -66 0 -66 C 22 -66 39 -52 42 -31" fill="none" stroke="#dfe6f7" stroke-width="1.6" stroke-opacity="0.9"/>
+
+          <!-- 呆毛 -->
+          <path d="M 9 -64 C 6 -74 13 -82 22 -80 C 28 -79 29 -74 25 -72" fill="none" stroke="#3a55a8" stroke-width="4" stroke-linecap="round"/>
+
+          <!-- 蓝色蝴蝶结 -->
+          <g transform="translate(40,-44)">
+            <path d="M 0 0 C -10 -9 -18 -6 -18 2 C -18 10 -10 12 0 4 Z" fill="#6fb4f5"/>
+            <path d="M 0 0 C 10 -9 18 -6 18 2 C 18 10 10 12 0 4 Z" fill="#6fb4f5"/>
+            <circle cx="0" cy="2" r="4" fill="#2f7fe0"/>
+          </g>
+        </g>
 
         <!-- 吐泡泡 -->
-        <g transform="translate(80,2)">
-          <circle class="bub"  cx="0" cy="0" r="4.2" fill="url(#bubble)"/>
-          <circle class="bub2" cx="7" cy="4" r="2.9" fill="url(#bubble)"/>
-          <circle class="bub3" cx="-3" cy="6" r="3.4" fill="url(#bubble)"/>
+        <g transform="translate(56,-32)">
+          <circle class="bub"  cx="0" cy="0" r="3.4" fill="url(#bubble)"/>
+          <circle class="bub2" cx="6" cy="-4" r="2.4" fill="url(#bubble)"/>
+          <circle class="bub3" cx="2" cy="-8" r="2" fill="url(#bubble)"/>
         </g>
 
       </g></g></g>
